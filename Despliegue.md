@@ -320,9 +320,6 @@ permissions-policy: geolocation=(), camera=(), microphone=(), payment=()
 - **Causa:** el workflow lo generó Azure al crear el App Service conectado al repositorio anterior. Al subir el código a un repositorio nuevo, el archivo `.yml` se copió, pero los *secrets* de autenticación (client-id, tenant-id, subscription-id) no, porque pertenecen a cada repositorio. Además, App Service no es el servicio adecuado para una SPA estática.
 - **Solución:** se usó Azure Static Web Apps (sección 4) y se eliminó el workflow antiguo (commit `9f99b3d`), para que cada push ejecute un solo workflow.
 
-> 📸 **Pendiente:** captura del log del error de login (ejecución fallida del Web App, paso en rojo). Guárdala como `capturas/20-error-login-azure.png` y reemplaza esta línea por:
-> `![Error de login en Azure](capturas/20-error-login-azure.png)`
-
 ### Problema 5: despliegue fallido al crear `staticwebapp.config.json`
 - **Síntoma:** la ejecución #3 ("Create staticwebapp.config.json", commit `d1a6c8f`) falló.
 - **Causa:** el archivo se creó **vacío**, sin contenido. Azure Static Web Apps lee este archivo en cada despliegue y espera un JSON válido.
