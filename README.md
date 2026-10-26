@@ -10,8 +10,8 @@ Aplicación **PokeDex (Angular 14)** desplegada en Microsoft Azure para la compa
 
 ## Documentación
 
-- [Instalación y ejecución local](docs/instalacion.md)
-- [Guía de despliegue](guiadeintalacion.md)
+- [Instalación y ejecución local](guiadeinstalacion.md)
+- [Guía de despliegue](despliegue.md)
 - [Configuración de seguridad](docs/seguridad.md)
 - [Paso a paso original](docs/paso-a-paso.md)
 
