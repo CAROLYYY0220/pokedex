@@ -115,12 +115,26 @@ URL final: **https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net**
 - Revisar periódicamente el consumo y eliminar recursos que ya no se usen (por ejemplo, el App Service que se descartó, ver Despliegue.md).
 - Antes de publicar capturas, ocultar correos, identificadores de suscripción y cualquier dato personal.
 
- **## Avisos de compilación de Angular (budgets):** durante el build aparecen dos
+  ### 5.1 Registro de la compilación
+
+En el log del paso "Build And Deploy" se ve cómo Azure compila la aplicación
+sin que se hayan escrito comandos de compilación:
+
+- Azure usa **Oryx**, que detectó una aplicación **Angular** con **Node.js 16.20.2**
+  y npm 8.19.4.
+- Ejecuta `npm install` para instalar las dependencias. Aparecen avisos
+  `npm WARN deprecated` sobre dos librerías obsoletas del código original;
+  no son errores.
+- Luego compila Angular y sube el resultado (`dist/pokedex-angular`) junto con
+  `staticwebapp.config.json`.
+
+  **## Avisos de compilación de Angular (budgets):** durante el build aparecen dos
   warnings: el archivo `pokemon-details.component.scss` supera el límite de
   2 kB (tiene 7,48 kB) y el bundle inicial supera el límite de 500 kB (tiene
   602,23 kB; 160,89 kB al transferirse comprimido). Son recomendaciones de
   tamaño sobre el código original; la compilación termina correctamente
   y la aplicación se despliega sin problemas.
+
 
 ---
 
