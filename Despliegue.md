@@ -1,8 +1,11 @@
 # Despliegue de PokeDex en Azure Static Web Apps
 
 > **Repositorio:** https://github.com/CAROLYYY0220/pokedex
+
 > **URL pública:** https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net
+
 > **Plataforma:** Azure Static Web Apps (plan gratuito) + GitHub Actions
+
 > **Seguridad:** A+ en securityheaders.com
 > **Cuenta y configuración inicial en la nube:** ver [README.md](README.md)
 
