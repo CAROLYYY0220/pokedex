@@ -203,6 +203,33 @@ Archivo en la **raíz** del repositorio. Azure lo lee en cada despliegue y agreg
   }
 }
 ```
+### 6.5 Versión comentada (solo explicativa)
+
+> Esta versión lleva comentarios para explicar cada parte. **No se debe copiar al archivo real**
+
+```jsonc
+{
+  // Reglas de navegación para la SPA de Angular
+  "navigationFallback": {
+    "rewrite": "/index.html",   // Cualquier ruta devuelve index.html y Angular decide qué mostrar
+    "exclude": [
+      "/assets/*",              // No aplicar la regla a la carpeta de recursos
+      "*.{css,js,gif,png,jpg,ico,woff,woff2,ttf,eot,otf,json}"  // ni a archivos reales
+    ]
+  },
+
+  // Encabezados que Azure agrega a todas las respuestas
+  "globalHeaders": {
+    // Política de contenido: de dónde se puede cargar cada recurso
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://beta.pokeapi.co https://graphql.pokeapi.co https://pokeapi.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+
+    "X-Frame-Options": "DENY",                    // Nadie puede incrustar la página en un iframe
+    "Permissions-Policy": "geolocation=(), camera=(), microphone=(), payment=()",  // Desactiva funciones que la app no usa
+    "Referrer-Policy": "strict-origin-when-cross-origin",  // Limita la información de origen enviada a otros sitios
+    "X-Content-Type-Options": "nosniff"          // El navegador no adivina el tipo de archivo
+  }
+}
+```
 
 ### 6.1 `navigationFallback`
 Angular es una aplicación de una sola página. Si alguien abre directamente una ruta interna (por ejemplo `/pokemon/25`), el servidor no tiene ese archivo y respondería 404. Esta regla devuelve `index.html` para cualquier ruta y Angular decide qué pantalla mostrar. El `exclude` evita aplicarla a archivos reales (CSS, JS, imágenes, fuentes).
