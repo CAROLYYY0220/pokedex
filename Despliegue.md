@@ -109,8 +109,8 @@ Al terminar, Azure hizo dos cosas automáticamente:
 - Agregó al repositorio el workflow de GitHub Actions (commit `9687ff8`, "ci: add Azure Static Web Apps workflow file").
 - Guardó en *Settings → Secrets and variables → Actions* del repositorio el secret `AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_DUNE_0D08C9E1E`, que autoriza a GitHub a publicar en Azure.
 
-> 📸 **Pendiente:** captura de *Settings → Secrets and variables → Actions* mostrando solo el **nombre** del secret (nunca su valor). Guárdala como `capturas/18-secret-github.png` y reemplaza esta línea por:
-> `![Secret en GitHub](capturas/18-secret-github.png)`
+> 📸 **Pendiente:** captura de *Settings → Secrets and variables → Actions* mostrando solo el **nombre** del secret (nunca su valor).
+> `![Secret en GitHub](capturas/23-secreto.png)`
 
 ---
 
