@@ -356,9 +356,9 @@ El escaneo se realizó el 26/10/2026 (18:50 UTC) y reconoció los seis encabezad
 2. Escribir el dominio `wonderful-dune-0d08c9e1e.1.azurestaticapps.net`.
 3. Marcar *Do not show the results on the boards* y pulsar **Submit**.
 
-**Resultado:** A+**
+**Resultado: A+**
 
-> ![Resultado A+ en www.ssllabs.com](22-ssl.png)
+> ![Resultado A+ en www.ssllabs.com](capturas/22-ssl.png)
 
 ## 11. Cómo actualizar la aplicación después
 
