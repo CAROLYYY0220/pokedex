@@ -35,6 +35,26 @@ El detalle de la creación del repositorio, la configuración de Azure, los par�
 
 La configuración de encabezados HTTP se documenta en [Configuración de seguridad](guiadeseguridad.md). El resultado A+ en SecurityHeaders es el resultado consignado en la documentación del proyecto; conviene volver a ejecutar el análisis si se necesita una verificación actualizada.
 
+## Problemas encontrados y soluciones
+
+### 1. Despliegue inicial en un servicio inadecuado
+- **Síntoma:** el workflow "Build and deploy Node.js app to Azure Web App"
+  falló en las ejecuciones #1 y #2.
+- **Causa:** se había creado un recurso de Azure App Service (Web App),
+  pensado para aplicaciones con servidor, y no para una SPA de Angular.
+- **Solución:** se usó Azure Static Web Apps, que sirve la carpeta compilada
+  (dist/pokedex-angular) y permite configurar encabezados HTTP.
+
+### 2. Workflow antiguo en conflicto
+- **Síntoma:** cada push ejecutaba dos workflows y uno siempre fallaba.
+- **Causa:** el archivo main_pokedex-carol.yml seguía en el repositorio.
+- **Solución:** se eliminó ese archivo (commit 9f99b3d).
+
+### 3. Error al crear staticwebapp.config.json
+- **Síntoma:** el despliegue #3 falló tras crear el archivo.
+- **Causa:** [completar con el mensaje de error]
+- **Solución:** se corrigió el archivo en el commit a863ff9 y el despliegue #4 fue exitoso.
+
 ## Capturas de pantalla
 
 Las siguientes imágenes se extrajeron del documento original y se incluyen en la carpeta `img/`.
