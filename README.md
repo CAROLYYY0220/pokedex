@@ -1,8 +1,11 @@
 # PokeDex en la nube: cuenta de Azure y configuración inicial
 
 > **Repositorio:** https://github.com/CAROLYYY0220/pokedex
+
 > **Aplicación publicada:** https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net
+
 > **Plataforma:** Microsoft Azure (Azure Static Web Apps, plan gratuito)
+
 > **Documento complementario:** [Despliegue.md](Despliegue.md) (cómo se publicó la aplicación)
 
 Este documento explica, paso a paso, cómo se creó la cuenta en la nube pública utilizada y cómo se hizo la configuración inicial antes de desplegar la aplicación PokeDex de Pueblo Paleta Inc.
