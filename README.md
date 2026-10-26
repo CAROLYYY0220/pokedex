@@ -29,11 +29,11 @@ El proyecto consiste en una aplicación PokeDex que consulta información de Pok
 
 ## Repositorio y despliegue
 
-El detalle de la creación del repositorio, la configuración de Azure, los parámetros de compilación y la comprobación del despliegue se encuentra en [la guía de despliegue](docs/despliegue.md).
+El detalle de la creación del repositorio, la configuración de Azure, los parámetros de compilación y la comprobación del despliegue se encuentra en [Guía de despliegue](despliegue.md).
 
 ## Seguridad
 
-La configuración de encabezados HTTP se documenta en [Configuración de seguridad](docs/seguridad.md). El resultado A+ en SecurityHeaders es el resultado consignado en la documentación del proyecto; conviene volver a ejecutar el análisis si se necesita una verificación actualizada.
+La configuración de encabezados HTTP se documenta en [Configuración de seguridad](guiadeseguridad.md). El resultado A+ en SecurityHeaders es el resultado consignado en la documentación del proyecto; conviene volver a ejecutar el análisis si se necesita una verificación actualizada.
 
 ## Capturas de pantalla
 
