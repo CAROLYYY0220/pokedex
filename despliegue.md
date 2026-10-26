@@ -102,7 +102,14 @@ curl.exe -I https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net
 
 La prueba funcional descrita consistió en recargar la página con `Ctrl+F5`, revisar la consola del navegador y confirmar que la lista y las imágenes de Pokémon cargaran correctamente.
 
-## 7. Referencias
+## 7 Errores encontrados en este paso
+| Error | Causa | Solución |
+|---|---|---|
+| `Repository not found` al clonar `pokedex-fork` | La URL no existía o no era accesible | Se clonó desde el repositorio correcto |
+| `Author identity unknown` al hacer commit | Git no tenía nombre ni correo configurados | `git config --global user.name` y `user.email` |
+| `src refspec main does not match any` al hacer push | El commit había fallado, por lo que `main` no tenía commits | Se repitió el commit y luego el push |
+
+## 8. Referencias
 
 - [Repositorio en GitHub](https://github.com/CAROLYYY0220/pokedex)
 - [Portal de Azure](https://portal.azure.com)
