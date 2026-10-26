@@ -115,6 +115,13 @@ URL final: **https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net**
 - Revisar periódicamente el consumo y eliminar recursos que ya no se usen (por ejemplo, el App Service que se descartó, ver Despliegue.md).
 - Antes de publicar capturas, ocultar correos, identificadores de suscripción y cualquier dato personal.
 
+- **Avisos de compilación de Angular (budgets):** durante el build aparecen dos
+  warnings: el archivo `pokemon-details.component.scss` supera el límite de
+  2 kB (tiene 7,48 kB) y el bundle inicial supera el límite de 500 kB (tiene
+  602,23 kB; 160,89 kB al transferirse comprimido). Son recomendaciones de
+  tamaño sobre el código original; la compilación termina correctamente
+  y la aplicación se despliega sin problemas.
+
 ---
 
 ## 6. Siguientes pasos
