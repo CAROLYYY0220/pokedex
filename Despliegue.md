@@ -348,7 +348,7 @@ El escaneo se realizó el 26/10/2026 (18:50 UTC) y reconoció los seis encabezad
 
 ![Resultado A+ en securityheaders.com](capturas/21-securityheaders-a-plus.png)
 
-### 10.2 (Opcional, +5 puntos) SSL Labs
+### 10.2 Opcional, SSL Labs
 1. Entrar a https://www.ssllabs.com/ssltest/
 2. Escribir el dominio `wonderful-dune-0d08c9e1e.1.azurestaticapps.net`.
 3. Marcar *Do not show the results on the boards* y pulsar **Submit**.
