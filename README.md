@@ -1,141 +1,119 @@
-# PokeDex en Azure Static Web Apps
+# PokeDex en la nube: cuenta de Azure y configuración inicial
 
-Aplicación **PokeDex (Angular 14)** desplegada en Microsoft Azure para la compañía Pueblo Paleta Inc.
+> **Repositorio:** https://github.com/CAROLYYY0220/pokedex
+> **Aplicación publicada:** https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net
+> **Plataforma:** Microsoft Azure (Azure Static Web Apps, plan gratuito)
+> **Documento complementario:** [Despliegue.md](Despliegue.md) (cómo se publicó la aplicación)
 
-- **Aplicación publicada:** https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net
-- **Repositorio:** https://github.com/CAROLYYY0220/pokedex
-- **Servicio de nube:** Azure Static Web Apps
-- **Automatización:** GitHub Actions
-- **Resultado reportado en SecurityHeaders:** A+
+Este documento explica, paso a paso, cómo se creó la cuenta en la nube pública utilizada y cómo se hizo la configuración inicial antes de desplegar la aplicación PokeDex de Pueblo Paleta Inc.
 
-## Documentación
+| Campo | Valor |
+|---|---|
+| Nube pública | Microsoft Azure |
+| Tipo de cuenta | Azure for Students (correo institucional) |
+| Servicio | Azure Static Web Apps |
+| Plan | Gratis (Free) |
+| Grupo de recursos | `pokedex` |
+| Región | Global |
+| Origen del código | GitHub (`CAROLYYY0220/pokedex`, rama `main`) |
+| Autor | `[Tu nombre]` |
 
-- [Instalación y ejecución local](guiadeinstalacion.md)
-- [Guía de despliegue](despliegue.md)
-- [Configuración de seguridad](guiadeseguridad.md)
+---
 
-## Tecnologías
+## 1. Plataforma elegida y por qué
 
-- Angular 14
-- Apollo Client / GraphQL
-- PokéAPI
-- GitHub
-- GitHub Actions
-- Azure Static Web Apps
+Se eligió **Microsoft Azure** porque:
 
-## Descripción
+- **Azure for Students** permite crear una cuenta gratuita con el correo institucional, con un crédito inicial para probar servicios.
+- Incluye **Azure Static Web Apps**, un servicio pensado para aplicaciones web estáticas como PokeDex (Angular compilado), con plan gratuito y distribución global.
+- Se conecta con GitHub y publica automáticamente cada cambio que se sube al repositorio.
+- Permite configurar encabezados de seguridad HTTP, requisito de la compañía.
 
-El proyecto consiste en una aplicación PokeDex que consulta información de Pokémon mediante PokéAPI. La aplicación se publica en Azure Static Web Apps y se configura un flujo de integración y despliegue continuo asociado al repositorio de GitHub.
+---
 
-## Repositorio y despliegue
+## 2. Creación de la cuenta de Azure
 
-El detalle de la creación del repositorio, la configuración de Azure, los parámetros de compilación y la comprobación del despliegue se encuentra en [Guía de despliegue](despliegue.md).
+1. Entrar a https://azure.microsoft.com/free/students y pulsar **Activar ahora**.
+2. Iniciar sesión con la cuenta Microsoft asociada al **correo institucional** (`@tecnoconfenalco.edu.co`). Azure for Students exige un correo de una institución educativa.
 
-## Seguridad
+   ![Inicio de sesión con el correo institucional](capturas/01-login-microsoft-correo-institucional.png)
 
-La configuración de encabezados HTTP se documenta en [Configuración de seguridad](guiadeseguridad.md). El resultado A+ en SecurityHeaders es el resultado consignado en la documentación del proyecto; conviene volver a ejecutar el análisis si se necesita una verificación actualizada.
+3. Completar la verificación de estudiante y los datos del perfil que pide Azure. `[Describe aquí lo que te pidió: código al correo, teléfono, etc.]`
+4. Al terminar, el portal https://portal.azure.com queda con la suscripción **Azure for Students** activa. Se comprueba en **Suscripciones**: aparece la suscripción con el rol **Propietario**, dentro del directorio de la institución.
 
-## Problemas encontrados y soluciones
+   ![Suscripción Azure for Students activa](capturas/02-suscripcion-azure-for-students.png)
 
-### 1. Despliegue inicial en un servicio inadecuado
-- **Síntoma:** el workflow "Build and deploy Node.js app to Azure Web App"
-  falló en las ejecuciones #1 y #2.
-- **Causa:** se había creado un recurso de Azure App Service (Web App),
-  pensado para aplicaciones con servidor, y no para una SPA de Angular.
-- **Solución:** se usó Azure Static Web Apps, que sirve la carpeta compilada
-  (dist/pokedex-angular) y permite configurar encabezados HTTP.
+5. En la página de la suscripción se ven los **detalles de la oferta para estudiantes**: 100 US$ de crédito disponible, 365 días de vigencia (hasta el 25/10/2027) y costos de octubre en 0,00 US$.
 
-### 2. Workflow antiguo en conflicto
-- **Síntoma:** cada push ejecutaba dos workflows y uno siempre fallaba.
-- **Causa:** el archivo main_pokedex-carol.yml seguía en el repositorio.
-- **Solución:** se eliminó ese archivo (commit 9f99b3d).
+   ![Créditos de la oferta para estudiantes](capturas/03-creditos-oferta-estudiantes.png)
 
-### 3. Error al crear staticwebapp.config.json
-- **Síntoma:** el despliegue #3 falló tras crear el archivo.
-- **Causa:** [completar con el mensaje de error]
-- **Solución:** se corrigió el archivo en el commit a863ff9 y el despliegue #4 fue exitoso.
+---
 
-## Capturas de pantalla
+## 3. Configuración inicial: crear el recurso Static Web App
 
-Las siguientes imágenes se extrajeron del documento original y se incluyen en la carpeta `img/`.
+### 3.1 Buscar el servicio
+En el portal, desde **Crear un recurso**, se busca **Aplicación web estática** (Static Web Apps) y se pulsa **Crear**.
 
-### Captura 01
+![Tarjeta de Aplicación web estática](capturas/04-crear-aplicacion-web-estatica.png)
 
-![Captura 01](img/01.png)
+Se confirma la suscripción (**Azure for Students**) y el plan (**Static Web App**).
 
-### Captura 02
+![Selección de suscripción y plan](capturas/14-crear-static-web-app-plan.png)
 
-![Captura 02](img/02.png)
+### 3.2 Datos básicos
+| Campo | Valor elegido | Por qué |
+|---|---|---|
+| Suscripción | Azure for Students | Es la suscripción gratuita de estudiante. |
+| Grupo de recursos | `pokedex` | Agrupa los recursos del proyecto, como una carpeta. |
+| Región de hospedaje | Global | Static Web Apps distribuye los archivos estáticos globalmente. |
 
-### Captura 03
+![Datos básicos: suscripción, grupo de recursos y región](capturas/05-datos-basicos-grupo-recursos.png)
 
-![Captura 03](img/03.png)
+### 3.3 Plan de hospedaje y origen del código
+| Campo | Valor elegido | Por qué |
+|---|---|---|
+| Tipo de plan | Gratis | Es un proyecto académico, no necesita el plan estándar. |
+| Origen | GitHub | El código ya está en un repositorio de GitHub. |
+| Cuenta / organización | `CAROLYYY0220` | Cuenta de GitHub autorizada para Azure. |
+| Repositorio | `pokedex` | Repositorio solicitado por el caso de estudio. |
+| Rama | `main` | Rama que se publica automáticamente. |
 
-### Captura 04
+![Plan gratuito y origen GitHub](capturas/06-plan-gratis-origen-github.png)
 
-![Captura 04](img/04.png)
+### 3.4 Detalles de compilación
+En la pestaña **Configuración de la implementación** se indican los datos para compilar Angular: ubicación de la app `/` y ubicación de salida `dist/pokedex-angular`.
 
-### Captura 05
+> 📸 **Pendiente:** captura de la pestaña *Configuración de la implementación / Detalles de compilación* (preset, ubicación de la app y de salida). Guárdala como `capturas/17-detalles-compilacion.png` y reemplaza esta línea por:
+> `![Detalles de compilación](capturas/17-detalles-compilacion.png)`
 
-![Captura 05](img/05.png)
+### 3.5 Revisar y crear
+Se pulsa **Revisar y crear** y luego **Crear**. Azure agrega automáticamente al repositorio el workflow de GitHub Actions y guarda en GitHub el secret con el token de despliegue.
 
-### Captura 06
+---
 
-![Captura 06](img/06.png)
+## 4. Verificación de la configuración
 
-### Captura 07
+Terminada la creación, el recurso muestra su información esencial: grupo de recursos `pokedex`, suscripción Azure for Students, ubicación Global, SKU **Free**, origen `main (GitHub)`, la URL pública y el enlace al workflow generado (`azure-static-web-apps-wonderful-dune-0d08...`).
 
-![Captura 07](img/07.png)
+![Información esencial del recurso](capturas/07-recurso-creado-essentials.png)
 
-### Captura 08
+En la vista general de la aplicación el estado es **Listo**, el entorno **Producción** y el dominio es la URL pública.
 
-![Captura 08](img/08.png)
+![Aplicación lista con su dominio](capturas/08-aplicacion-lista-dominio.png)
 
-### Captura 09
+URL final: **https://wonderful-dune-0d08c9e1e.1.azurestaticapps.net**
 
-![Captura 09](img/09.png)
+---
 
-### Captura 10
+## 5. Recomendaciones de seguridad de la cuenta
 
-![Captura 10](img/10.png)
+- No subir al repositorio contraseñas, tokens ni claves; los secretos se guardan en *Settings → Secrets and variables → Actions* de GitHub.
+- Activar la verificación en dos pasos en la cuenta Microsoft y en GitHub.
+- Revisar periódicamente el consumo y eliminar recursos que ya no se usen (por ejemplo, el App Service que se descartó, ver Despliegue.md).
+- Antes de publicar capturas, ocultar correos, identificadores de suscripción y cualquier dato personal.
 
-### Captura 11
+---
 
-![Captura 11](img/11.png)
+## 6. Siguientes pasos
 
-### Captura 12
-
-![Captura 12](img/12.png)
-
-### Captura 13
-
-![Captura 13](img/13.png)
-
-### Captura 14
-
-![Captura 14](img/14.png)
-
-### Captura 15
-
-![Captura 15](img/15.png)
-
-### Captura 16
-
-![Captura 16](img/16.png)
-
-### Captura 17
-
-![Captura 17](img/17.png)
-
-### Captura 18
-
-![Captura 18](img/18.png)
-
-### Captura 19
-
-![Captura 19](img/19.png)
-
-### Captura 20
-
-![Captura 20](img/20.png)
-
+La publicación de la aplicación, los comandos, el código del workflow, los encabezados de seguridad, los problemas encontrados y el resultado **A+** en securityheaders.com están en [Despliegue.md](Despliegue.md).
