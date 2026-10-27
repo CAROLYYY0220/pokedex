@@ -86,8 +86,6 @@ Se confirma la suscripción (**Azure for Students**) y el plan (**Static Web App
 ### 3.4 Detalles de compilación
 En la pestaña **Configuración de la implementación** se indican los datos para compilar Angular: ubicación de la app `/` y ubicación de salida `dist/pokedex-angular`.
 
-> 📸 **Pendiente:** captura de la pestaña *Configuración de la implementación / Detalles de compilación* (preset, ubicación de la app y de salida). Guárdala como `capturas/17-detalles-compilacion.png` y reemplaza esta línea por:
-> `![Detalles de compilación](capturas/17-detalles-compilacion.png)`
 
 ### 3.5 Revisar y crear
 Se pulsa **Revisar y crear** y luego **Crear**. Azure agrega automáticamente al repositorio el workflow de GitHub Actions y guarda en GitHub el secret con el token de despliegue.
